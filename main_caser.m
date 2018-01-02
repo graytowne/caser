@@ -1,27 +1,29 @@
 clear; clc;
-% dataset related arguments
+
+%% dataset related arguments
 train_path = 'data/ml1m/test/train.txt';
 test_path = 'data/ml1m/test/test.txt';
-rate_once = 1;
-L = 5;
-T = 1;
+rate_once = 1;           % whether each item will only be rated once by each user
+L = 5;                   % length of sequence
+T = 3;                   % number of targets
 
-% training arguments
-seed = 1234;
-n_iter = 50;
-learning_rate = 1e-3;
-l2 = 1e-6;
-neg_samples = 3; % per targets
-early_stop = true;
+%% training arguments
+seed = 1234;             % random seed
+n_iter = 50;             % number of iteration
+learning_rate = 1e-3;    % learning rate for ADAM
+l2 = 1e-6;               % l2 norm weight
+neg_samples = 3;         % negative samples per target
+early_stop = true;       % whether to perform early stop during training
 
-% Caser related arguments
-d = 50;
-nv = 4;
-nh = 16;
-ac_conv = 'relu';
-ac_fc = 'relu'; 
-drop_rate = 0.5;
+%% Caser related arguments
+d = 50;                 % number of latent dimensions
+nv = 4;                 % number of vertical filters
+nh = 16;                % number of horizontal filters
+ac_conv = 'relu';       % activation function for convolution layer (i.e., phi_c in paper)
+ac_fc = 'relu';         % activation function for fully-connected layer (i.e., phi_a in paper)
+drop_rate = 0.5;        % drop ratio when performing dropout
 
+%% Perform training
 args = struct(...
         'trainpath',train_path,...
         'testpath',test_path,...    

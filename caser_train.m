@@ -1,4 +1,11 @@
 function caser_train( args )
+    % Codes for training caser base on the paper:
+    % <Personalized Top-N Sequential Recommendation via Convolutional
+    % Sequence Embedding>, Jiaxi Tang and Ke Wang, WSDM 18
+    %
+    % ARGS:
+    % args       : the given training related arguments
+
     addpath MatConvNet/
     addpath data/
     addpath model/
@@ -93,7 +100,7 @@ function caser_train( args )
         fprintf('iter: %d\tloss: %.2f\tdelta_loss: %.2f\t\n', iter, loss, delta_loss);toc;
         
         %% Evaluation loop
-        every = 5;
+        every = 1;
         if early_stop == true && mod(iter, every) == 0 
             tic;
             cutoff = [1,5,10];

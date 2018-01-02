@@ -1,13 +1,10 @@
 function [x, state] = adam_update(x, dx, config, state)
-% [x, fx, state] = adam(opfunc, x, config, state) - ADAM 
 % from http://arxiv.org/pdf/1412.6980.pdf
 % Based on https://github.com/torch/optim/blob/master/adam.lua 
-% Retrieved on [10:29, GMT, 24th May 2016]
 %
 % ARGS:
-% opfunc  : a function that takes a single input (X), the point
-%            of a evaluation, and returns f(X) and df/dX
-% x       : the initial point
+% x       : the initial x vector
+% dx      : the derivatives of x vector
 % config  : a table with configuration parameters for the optimizer
 % config.learningRate       : learning rate
 % config.beta1              : first moment coefficient
@@ -17,10 +14,9 @@ function [x, state] = adam_update(x, dx, config, state)
 %                             after each call the state is modified
 % RETURN:
 % x       : the new x vector
-% f(x)    : the function, evaluated before the update
 % state   : updated state
 
-% (0) get/update state
+% Get/update state
 if(~exist('config', 'var')), config = struct();  end
 if(~exist('state', 'var')), state = config; end
 lr = getConfig(config, 'learning_rate', 1e-3);
@@ -54,10 +50,8 @@ biasCorrection1 = 1 - beta1^state.t;
 biasCorrection2 = 1 - beta2^state.t;
 stepSize = lr * sqrt(biasCorrection2) / biasCorrection1;
 
-% (2) Update x
+% Update x
 x = x - stepSize * state.m ./ denom;
-
-% Note that x, fx and the updated state are returned
 
 % -------------------------------------------------------------------------
 function val = getConfig(config, fieldname, default)
