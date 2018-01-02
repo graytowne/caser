@@ -11,9 +11,9 @@ function caser_train( args )
     %% Setup: load data
     L = args.L;
     T = args.T;
-    dataset_name = args.dataset;
-    phase = args.phase;
-    [s_train, s_test, vocab_item, vocab_user, ui_train] = load_data(dataset_name, phase, L, T);
+    train_path = args.trainpath;
+    test_path = args.testpath;
+    [s_train, s_test, vocab_item, vocab_user, ui_train] = load_data(train_path, test_path, L, T);
     
     %% Setup: initialization
     % dataset related params

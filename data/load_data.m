@@ -1,30 +1,10 @@
-function [s_train, s_test, vocab_item, vocab_user, ui_train] = load_data(dataset_name, phase, L, T) 
-os_version = computer;
-if strcmp(os_version, 'MACI64') % MacOS
-    separater = '/';
-elseif strcmp(os_version, 'GLNXA64') % Linux
-	separater = '/';
-else % Windows
-    separater = '\\';
-end
-path = sprintf('data%s%s%s', separater, dataset_name, separater);
+function [s_train, s_test, vocab_item, vocab_user, ui_train] = load_data(train_path, test_path, L, T) 
 
 max_length = L + T;
 train_ratio = L/max_length;
 
-f_train = '';
-f_test = '';
-
-switch phase
-    case 'validation'
-       f_train = 'train_valid.txt';
-       f_test = 'test_valid.txt';
-    case 'test'
-        f_train = 'train_full.txt';
-        f_test = 'test_full.txt';
-end
-fid_train = fopen(sprintf('%s%s', path, f_train));
-fid_test = fopen(sprintf('%s%s', path, f_test));
+fid_train = fopen(train_path);
+fid_test = fopen(test_path);
 
 % train
 data = textscan(fid_train, '%f\t%f\t%f');
