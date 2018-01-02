@@ -1,0 +1,8 @@
+data/*
+!data/load_data.m
+diary/*
+log/*
+MatConvNet/*
+vars/*
+.DS_Store
+*.m~
