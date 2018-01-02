@@ -18,22 +18,22 @@ Personalized Top-N Sequential Recommendation via Convolutional Sequence Embeddin
 
 # Configurations
 
-**Data**
+#### Data
 
-- Datasets are organized in 2 seperate files: train.txt and test.txt
+- Datasets are organized in 2 seperate files: **_train.txt_** and **_test.txt_**
 
 - Same to other data format for recommendation, each file contains a collection of triplets:
 
-  user, item, rating
+  > user, item, rating
 
-  The only difference is the triplets are organized in time order.
+  The only difference is the triplets are organized in *time order*.
 
 - As the problem is Sequential Reommendation, the rating doesn't matter, so I convert them to all 1.
 
-**Model**
+#### Model
 
-- Datasets are organized in 2 seperate files: train.txt and test.txt
-- ​
+- <code>d</code>: number of latent dimensions   
+- <code>d</code>: number of latent dimensions   
 
 # Comments
 
@@ -41,4 +41,3 @@ For easy implementation and flexibility, I didn't implement the above things:
 
 * Didn't make mini-batch in parallel.
 * Didn't make the model in MatConvNet [wrapper](http://www.vlfeat.org/matconvnet/wrappers/).
-
