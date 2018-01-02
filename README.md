@@ -1,11 +1,11 @@
 
 # Caser
 
-A Matlab implementation of Convolutional Sequence Embedding Recommendation Model (Caser) : 
+A Matlab implementation of Convolutional Sequence Embedding Recommendation Model (Caser) from paper: 
 
-Personalized Top-N Sequential Recommendation via Convolutional Sequence Embedding (WSDM '18) 
+*Personalized Top-N Sequential Recommendation via Convolutional Sequence Embedding, Jiaxi Tang and Ke Wang , WSDM '18*
 
-*Note: I strongly suggest to use the PyTorch version here, as it has better readability and reproducibility.*
+*Note: I strongly suggest to use the PyTorch version [here](https://github.com/graytowne/caser_pytorch), as it has better readability and reproducibility.*
 
 # Requirements
 * Matlab R2015 + 
@@ -30,7 +30,7 @@ Personalized Top-N Sequential Recommendation via Convolutional Sequence Embeddin
 
 - As the problem is Sequential Reommendation, the rating doesn't matter, so I convert them to all 1.
 
-#### Model
+#### Model Args (in main_caser.m)
 
 - <code>L</code>: length of sequence  
 - <code>T</code>: number of targets   
@@ -39,8 +39,8 @@ Personalized Top-N Sequential Recommendation via Convolutional Sequence Embeddin
 - <code>d</code>: number of latent dimensions   
 - <code>nv</code>: number of vertical filters
 - <code>nh</code>: number of horizontal filters
-- <code>ac_conv</code>: activation function for convolution layer ($\phi_c$)
-- <code>ac_fc</code>: activation function for fully-connected layer ($\phi_a$)
+- <code>ac_conv</code>: activation function for convolution layer (i.e., phi_c in paper)
+- <code>ac_fc</code>: activation function for fully-connected layer (i.e., phi_a in paper)
 - <code>drop_rate</code>: drop ratio when performing dropout
 
 # Comments
