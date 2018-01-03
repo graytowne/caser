@@ -46,6 +46,7 @@ function caser_train( args )
    
     %% Training loop
     losses = zeros(n_iter+1,1);
+    maps = zeros(n_iter, 1);
     
     for iter=1:n_iter
         tic;
@@ -137,6 +138,8 @@ function caser_train( args )
             mean_ap = sum(aps) / (cnt-1);
             mean_prec_k = sum(precs) / (cnt-1);
             mean_recall_k = sum(recalls) / (cnt-1);
+            
+            maps(iter) = mean_ap;
 
             fprintf('map %f\n', mean_ap);
             fprintf('prec@1 %f, prec@5 %f, prec@10 %f\n', mean_prec_k(1), mean_prec_k(2), mean_prec_k(3));
@@ -144,7 +147,7 @@ function caser_train( args )
             fprintf('\n');toc;
             
             if iter > every
-                if results(iter, 8) < results(iter-every, 8)  % early stop if there's no MAP improves
+                if maps(iter) < maps(iter-every)  % early stop if there's no MAP improves
                     break;
                 end
             end

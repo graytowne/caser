@@ -1,8 +1,8 @@
 clear; clc;
 
 %% dataset related arguments
-train_path = 'data/ml1m/test/train.txt';
-test_path = 'data/ml1m/test/test.txt';
+train_path = 'data/ml1m/validation/train.txt';
+test_path = 'data/ml1m/validation/test.txt';
 rate_once = 1;           % whether each item will only be rated once by each user
 L = 5;                   % length of sequence
 T = 3;                   % number of targets
