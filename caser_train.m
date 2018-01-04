@@ -76,7 +76,7 @@ function caser_train( args )
                 item_j = neg_sample(items_rated, n_NS, n_items);
                 % compute outputs
                 inputs.seq = item_l; inputs.targets = item_i; inputs.user = user; inputs.negatives = item_j;
-                outputs = caser.forward(inputs);
+                outputs = caser.forward(inputs, 'train');
                 oi = outputs.oi; oj = outputs.oj;
                 loss_cnt = loss_cnt + length(oi) + length(oj);
                 % compute loss
@@ -120,7 +120,7 @@ function caser_train( args )
                 end
                 % compute outputs
                 inputs.seq = item_l; inputs.targets = item_i; inputs.user = user; inputs.negatives = 1;
-                outputs = caser.forward(inputs);
+                outputs = caser.forward(inputs, 'eval');
                 O = outputs.oi;
                 [~, pred] = sort(O, 'descend');
                 if rate_once

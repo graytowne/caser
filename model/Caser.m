@@ -88,6 +88,9 @@ classdef Caser < handle
 
             flatten = vl_nnconcat(flatten_layer, 1);
             % apply dropout
+            if strcmp(mode, 'eval')
+                drop_rate = 0;
+            end
             [flatten_dropout, mask] = vl_nndropout(flatten, 'rate', drop_rate);
             c1 = vl_nnconv(flatten_dropout, W1, B1);
             % apply activation function
@@ -112,18 +115,20 @@ classdef Caser < handle
             outputs.oi = oi;
             outputs.oj = oj;
             
-            % save intermediate variables for backward
-            obj.Temp_Params.flatten_layer = flatten_layer;
-            obj.Temp_Params.res_v = res_v;
-            obj.Temp_Params.concat_v = concat_v;
-            obj.Temp_Params.res_h = res_h;
-            obj.Temp_Params.concat_h = concat_h;
-            obj.Temp_Params.flatten = flatten;
-            obj.Temp_Params.flatten_dropout = flatten_dropout;
-            obj.Temp_Params.mask = mask;
-            obj.Temp_Params.z1 = z1;
-            obj.Temp_Params.c1 = c1;
-            obj.Temp_Params.z = z;
+            if strcmp(mode, 'train')
+                % save intermediate variables for backward
+                obj.Temp_Params.flatten_layer = flatten_layer;
+                obj.Temp_Params.res_v = res_v;
+                obj.Temp_Params.concat_v = concat_v;
+                obj.Temp_Params.res_h = res_h;
+                obj.Temp_Params.concat_h = concat_h;
+                obj.Temp_Params.flatten = flatten;
+                obj.Temp_Params.flatten_dropout = flatten_dropout;
+                obj.Temp_Params.mask = mask;
+                obj.Temp_Params.z1 = z1;
+                obj.Temp_Params.c1 = c1;
+                obj.Temp_Params.z = z;
+            end
         end
         
         function backward(obj, inputs)
