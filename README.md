@@ -43,6 +43,19 @@ A Matlab implementation of Convolutional Sequence Embedding Recommendation Model
 - <code>ac_fc</code>: activation function for fully-connected layer (i.e., phi_a in paper)
 - <code>drop_rate</code>: drop ratio when performing dropout
 
+# Citation
+
+If you use this Caser in your paper, please cite the paper:
+
+```
+@inproceedings{tang2018caser,
+  title={Personalized Top-N Sequential Recommendation via Convolutional Sequence Embedding},
+  author={Tang, Jiaxi and Wang, Ke},
+  booktitle={ACM International Conference on Web Search and Data Mining},
+  year={2018}
+}
+```
+
 # Comments
 
 For easy implementation and flexibility, I didn't implement below things:
