@@ -62,3 +62,13 @@ For easy implementation and flexibility, I didn't implement below things:
 
 * Didn't make mini-batch in parallel.
 * Didn't make the model in MatConvNet [wrapper](http://www.vlfeat.org/matconvnet/wrappers/).
+
+# Build With
+- MATLAB 
+
+# Author
+- Tang, Jiaxi
+- Wang, Ke
+
+# License 
+- GNU Lesser General Public License v3.0
